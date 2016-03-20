@@ -31,7 +31,7 @@ public class CharacterController2D : MonoBehaviour
 	protected float wallTouchAt;
 
 	protected Rigidbody2D body;
-	protected Collider2D collider;
+	new protected Collider2D collider;
 
 	protected void Awake ()
 	{
@@ -61,9 +61,11 @@ public class CharacterController2D : MonoBehaviour
 		Vector2 velocity = body.velocity;
 		velocity.x = input.x * groundSpeed;
 
-		if ((velocity.x > 0 && IsTouching (CollisionDirections.Right)) || (velocity.x < 0 && IsTouching (CollisionDirections.Left))) {
-			float t = (Time.time - wallTouchAt) / walltouchDampTime;
-			velocity = Vector2.Lerp (velocity, Vector2.Scale (velocity, Vector2.up), t);
+		if (velocity.y <= 0) {
+			if ((velocity.x > 0 && IsTouching (CollisionDirections.Right)) || (velocity.x < 0 && IsTouching (CollisionDirections.Left))) {
+				float t = (Time.time - wallTouchAt) / walltouchDampTime;
+				velocity = Vector2.Lerp (velocity, Vector2.Scale (velocity, Vector2.up), t);
+			}
 		}
 
 		body.velocity = velocity;
