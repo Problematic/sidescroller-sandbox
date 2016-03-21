@@ -82,6 +82,12 @@ public class CharacterController2D : MonoBehaviour
 
 		animator.SetFloat ("hVelocity", velocity.x);
 		animator.SetFloat ("vVelocity", velocity.y);
+
+		animator.SetFloat ("hVelocityAbs", Mathf.Abs (velocity.x));
+		animator.SetFloat ("vVelocityAbs", Mathf.Abs (velocity.y));
+
+		animator.SetFloat ("hVelocityUnit", velocity.x == 0 ? 0 : Mathf.Sign (velocity.x));
+		animator.SetFloat ("vVelocityUnit", velocity.y == 0 ? 0 : Mathf.Sign (velocity.y));
 	}
 
 	protected void OnCollisionEnter2D (Collision2D coll)
