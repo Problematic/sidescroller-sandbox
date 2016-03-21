@@ -103,6 +103,7 @@ public class CharacterController2D : MonoBehaviour
 				collisions |= CollisionDirections.Down;
 				animator.SetTrigger ("didLand");
 				animator.SetBool ("isJumping", false);
+				animator.SetBool ("isGrounded", true);
 			} else if (cp.normal == Vector2.right) {
 				collisions |= CollisionDirections.Left;
 				wallTouchAt = Time.time;
@@ -120,6 +121,7 @@ public class CharacterController2D : MonoBehaviour
 				collisions &= ~CollisionDirections.Up;
 			} else if (cp.normal == Vector2.up) {
 				collisions &= ~CollisionDirections.Down;
+				animator.SetBool ("isGrounded", false);
 			} else if (cp.normal == Vector2.right) {
 				collisions &= ~CollisionDirections.Left;
 			} else if (cp.normal == Vector2.left) {
