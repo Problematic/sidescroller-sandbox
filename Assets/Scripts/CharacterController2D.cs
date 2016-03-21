@@ -92,8 +92,6 @@ public class CharacterController2D : MonoBehaviour
 
 	protected void OnCollisionEnter2D (Collision2D coll)
 	{
-		Debug.LogFormat ("OnCollisionEnter: {0}", coll);
-
 		if (!collider.IsTouchingLayers (groundLayers.value)) {
 			return;
 		}
@@ -117,8 +115,6 @@ public class CharacterController2D : MonoBehaviour
 
 	protected void OnCollisionExit2D (Collision2D coll)
 	{
-		Debug.LogFormat ("OnCollisionExit: {0}", coll);
-
 		foreach (ContactPoint2D cp in coll.contacts) {
 			if (cp.normal == Vector2.down) {
 				collisions &= ~CollisionDirections.Up;
