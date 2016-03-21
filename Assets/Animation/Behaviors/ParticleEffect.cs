@@ -18,7 +18,6 @@ public class ParticleEffect : StateMachineBehaviour
 			effectInstance = effectTransform.gameObject.GetComponentInChildren<ParticleSystem> ();
 		}
 
-		Debug.Log (animator.GetFloat ("vVelocity"));
 		if (animator.GetFloat ("vVelocity") <= minVelocity) {
 			effectTransform.position = animator.transform.position;
 			effectInstance.Play (true);
